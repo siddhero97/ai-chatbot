@@ -1,9 +1,16 @@
 import type { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
-  output: 'standalone', // Add this line
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone',
+  // Add assetPrefix for production only
+  assetPrefix: 'https://ai-chatbot-yoz3.onrender.com',
   experimental: {
     ppr: true,
+  },
+  distDir: '.next',
+  generateBuildId: async () => {
+    return 'build-id'
   },
   images: {
     remotePatterns: [
@@ -20,6 +27,10 @@ const nextConfig: NextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*'
           },
         ],
       },

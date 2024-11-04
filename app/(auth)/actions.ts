@@ -61,7 +61,7 @@ export const register = async (
       password: formData.get("password"),
     });
 
-    console.log("inside  register function Nov 4 10:00 pst");
+    console.log("inside  register function Nov 4 10:58 pst");
     let [user] = await getUser(validatedData.email);
 
     if (user) {
